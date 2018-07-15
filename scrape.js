@@ -87,8 +87,7 @@ let scrape = async () => {
   let result_of_all_letters = []
   for(const one_letter of ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']) {
     const result_of_one_letter = await get_result_of_one_letter(one_letter)
-    result_of_all_letters.push(result_of_one_letter)
-
+    result_of_all_letters = result_of_all_letters.concat(result_of_one_letter)
   }
   browser.close();
   return result_of_all_letters; // Return the data
