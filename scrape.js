@@ -2,8 +2,9 @@ const puppeteer = require("puppeteer");
 
 let scrape = async () => {
   const browser = await puppeteer.launch({
-    // executablePath:
-    //   "../../Program Files (x86)/Google/Chrome/Application/chrome.exe",
+
+    // use the following path only for bash
+    // executablePath: "../../Program Files (x86)/Google/Chrome/Application/chrome.exe",
     headless: false
   });
   const page = await browser.newPage();
