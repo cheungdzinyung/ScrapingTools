@@ -2,14 +2,13 @@ const puppeteer = require("puppeteer");
 
 let scrape = async () => {
   const browser = await puppeteer.launch({
-    executablePath:
-      "../../Program Files (x86)/Google/Chrome/Application/chrome.exe",
+    // use the following path only for bash
+    // executablePath: "../../Program Files (x86)/Google/Chrome/Application/chrome.exe",
     headless: false
   });
   const page = await browser.newPage();
-  await page.goto(
-    "http://www.amcham.org.hk/membership/membership-directory/companies/a?page=1"
-  );
+  let urlQueue = ["http://www.amcham.org.hk/membership/membership-directory/companies/A"];
+  await page.goto(urlQueue[0]);
 
   const result = await page.evaluate(() => {
     let data = [];
@@ -19,7 +18,7 @@ let scrape = async () => {
       if (data == undefined) {
         return "";
       } else {
-        return data.innerText.trim().replace(/\n/g, ", ");;
+        return data.innerText.trim().replace(/\n/g, ", ");
       }
     }
 
