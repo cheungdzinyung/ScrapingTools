@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+const fs = require("fs");
 
 let scrape = async () => {
   const browser = await puppeteer.launch({
@@ -83,5 +84,5 @@ let scrape = async () => {
 };
 
 scrape().then(value => {
-  console.log(value); // Success!
+  fs.writeFileSync('./result.json', JSON.stringify(value)); // Success!
 });
