@@ -68,7 +68,7 @@ let scrape = async () => {
     let next_page_url = result_of_one_page.next_page_url;
     let data_array = result_of_one_page.data_array;
     // console.log(result_of_one_page);
-    process.stdout.write("Work in progress" + ".".repeat(counter) + "\r");
+    process.stdout.write("work in progress" + ".".repeat(counter) + "\r");
     counter += 1;
     result_of_many_pages = result_of_many_pages.concat(data_array);
 
