@@ -1,11 +1,11 @@
 const puppeteer = require("puppeteer");
+const fs = require("fs");
 
 let scrape = async () => {
   const browser = await puppeteer.launch({
-
     // use the following path only for bash
     // executablePath: "../../Program Files (x86)/Google/Chrome/Application/chrome.exe",
-    headless: false
+    headless: true
   });
   const page = await browser.newPage();
   async function get_result_of_one_letter(letter_input) {
@@ -65,7 +65,10 @@ let scrape = async () => {
     }
     let url_queue = [`http://www.amcham.org.hk/membership/membership-directory/companies/${letter_input}?page=1`]
     let result_of_many_pages = []
+    let counter = 0;
     while(url_queue.length >= 1){
+      counter += 1;
+      process.stdout.write("work in progress" + ".".repeat(counter) + "\r");
       let result_of_one_page = await get_result_from_url(url_queue.shift()) // get url_queue[0] and remove it from queue
       let next_page_url = result_of_one_page.next_page_url;
       let data_array = result_of_one_page.data_array
@@ -92,5 +95,5 @@ let scrape = async () => {
 };
 
 scrape().then(value => {
-  console.log(value); // Success!
+  fs.writeFileSync('./result.json', JSON.stringify(value)); // Success!
 });
