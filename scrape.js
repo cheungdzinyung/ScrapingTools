@@ -95,5 +95,5 @@ let scrape = async () => {
 };
 
 scrape().then(value => {
-  fs.writeFileSync('./result.json', JSON.stringify(value)); // Success!
+  fs.writeFileSync('./output/result.json', JSON.stringify(value)); // Success!
 });
