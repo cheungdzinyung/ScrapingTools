@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^6.0.0",
+    "lodash": "^4.17.10",
+    "longest-common-substring": "0.0.1",
     "nodemailer": "^4.6.7",
     "puppeteer": "^1.5.0"
   }
